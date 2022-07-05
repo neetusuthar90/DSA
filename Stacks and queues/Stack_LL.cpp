@@ -56,14 +56,16 @@ public:
     } 
 
     T pop(){
-        if (head == NULL){
-            return -1;
+        if (isempty()){
+            return 0;
         }
 
-        int temp = head -> data;
+        T ans = head -> data;
+        Node<T> *temp = head;
         head = head -> next;
+        delete temp;
         size --;
-        return temp;
+        return ans;
     }
 
 };
