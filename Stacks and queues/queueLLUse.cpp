@@ -12,7 +12,6 @@ int main(){
     q.enqueue(60);
     q.enqueue(70);
     
-
     cout << q.front() << endl;
     cout << q.dequeue() << endl;
     cout << q.dequeue() << endl;

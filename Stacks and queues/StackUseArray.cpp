@@ -2,9 +2,10 @@
 using namespace std;
 #include "Stack_array.h"
 
-int main(){
+int main()
+{
 
-    Stack_array<char> s;
+    Stack_array<int> s;
 
     s.push(64);
     s.push(65);
@@ -19,5 +20,5 @@ int main(){
     s.pop();
 
     cout << s.top() << endl;
-    cout << s.isempty() << endl;    
+    cout << s.isempty() << endl;
 }
