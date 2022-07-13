@@ -47,33 +47,22 @@ void printTreeLevelwise(TreeNode<int> *root){
     }
 }
 
-int numNodes(TreeNode<int> *root){
+int heightOfTree(TreeNode<int> *root){
+    int height = 0;
     if (root == NULL){
-        return;
+        return height;
     }
-    int ans = 1;
-    for(int i = 0; i < root->children.size(); i++){
-        ans += numNodes(root -> children[i]);
-    }
-    return ans;
-}
-
-TreeNode<int>* maxNode(TreeNode<int> *root){
-    TreeNode<int> *max = root;
     for (int i = 0; i < root -> children.size(); i++){
-        TreeNode<int> *temp = maxNode(root -> children[i]);
-        if (max-> data < temp -> data){
-            max = temp;
-        }
+        int temp =  heightOfTree(root -> children[i]);
+        height = max(temp,height);
     }
-    return max;
+    return height + 1;
 }
 
 int main(){
     TreeNode<int> *root = takeInputLevelwise();
     printTreeLevelwise(root);
-    int totalnode = numNodes(root);
-    cout << "Total nodes in the tree: " << totalnode << endl;
-    TreeNode<int> *maximum = maxNode(root);
-    cout << "Maximum of all the nodes in tree: " << maximum -> data << endl;
+    int h = heightOfTree(root);
+    cout << h << endl;
+    
 }

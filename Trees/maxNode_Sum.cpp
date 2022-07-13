@@ -2,6 +2,7 @@
 #include <queue>
 using namespace std;
 #include "TreeNode.h"
+#include <utility>
 
 TreeNode<int> *takeInputLevelwise(){
     int rootData;
@@ -47,33 +48,39 @@ void printTreeLevelwise(TreeNode<int> *root){
     }
 }
 
-int numNodes(TreeNode<int> *root){
-    if (root == NULL){
-        return;
-    }
-    int ans = 1;
-    for(int i = 0; i < root->children.size(); i++){
-        ans += numNodes(root -> children[i]);
-    }
-    return ans;
-}
+// Helper function
+pair<TreeNode<int>*,int> helper(TreeNode<int> *root){
+    int sum = root -> data; 
+    TreeNode<int> *ans = root;
 
-TreeNode<int>* maxNode(TreeNode<int> *root){
-    TreeNode<int> *max = root;
-    for (int i = 0; i < root -> children.size(); i++){
-        TreeNode<int> *temp = maxNode(root -> children[i]);
-        if (max-> data < temp -> data){
-            max = temp;
+    for (int i = 0; i < root->children.size(); i++){
+        sum += root ->children[i]->data;
+
+    }
+
+    for (int i = 0; i < root->children.size(); i++){
+        pair<TreeNode<int>*,int> temp = helper(root ->children[i]);
+        if (temp.second > sum){
+            ans = temp.first;
+            sum = temp.second;
         }
+        
     }
-    return max;
+    return {ans,sum};
 }
 
+TreeNode<int>* maxSumNode(TreeNode<int> *root){
+    if (root == NULL){
+        return root;
+    }
+
+    return helper(root).first;
+}
+
+// 1 3 2 3 4 1 5 2 6 7 0 0 2 8 9 0 0 0
 int main(){
     TreeNode<int> *root = takeInputLevelwise();
     printTreeLevelwise(root);
-    int totalnode = numNodes(root);
-    cout << "Total nodes in the tree: " << totalnode << endl;
-    TreeNode<int> *maximum = maxNode(root);
-    cout << "Maximum of all the nodes in tree: " << maximum -> data << endl;
+    TreeNode<int> *node = maxSumNode(root);
+    cout << "Max sum child node is: " << node->data << endl; 
 }
