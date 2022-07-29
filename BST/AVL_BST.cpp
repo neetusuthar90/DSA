@@ -134,7 +134,7 @@ int main()
     root = insert(30,root);
     root = insert(40,root);
     root = insert(50,root);
-    root = insert(5,root);
+    root = insert(5 ,root);
     
     cout << "Preorder traversal of the "
             "constructed AVL tree is \n";
