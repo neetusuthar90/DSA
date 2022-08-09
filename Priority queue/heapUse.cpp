@@ -1,5 +1,5 @@
 #include <iostream>
-#include "PriorityQueue.h"
+#include "minHeap.h"
 using namespace std;
 
 // Check max heap or not
@@ -18,7 +18,7 @@ bool maxHeap(int *arr, int n, int index = 0){
 }
 
 int main(){
-    PriorityQueue p;
+    minHeap p;
     int N, data;
     cin >> N;
     for(int i = 0; i < N; i++){

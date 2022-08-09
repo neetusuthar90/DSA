@@ -2,13 +2,13 @@
 #include <vector>
 using namespace std;
 
-class PriorityQueue
+class minHeap
 {
 private:
     vector<int> pq;
 
 public:
-    PriorityQueue()
+    minHeap()
     {
     }
 
