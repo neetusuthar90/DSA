@@ -7,7 +7,7 @@ int getMaxFrequency(int *a, int size){
     for(int i = 0; i < size; i++){
         frequency[a[i]]++;
     }
-
+    
     int key = 0;
     int count = 0;
     for(int i = 0; i<size; i++){
