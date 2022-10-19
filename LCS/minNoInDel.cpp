@@ -1,7 +1,4 @@
-#include <algorithm> 
-#include<iostream>
-#include<string>
-#include<climits>
+#include <bits/stdc++.h>
 using namespace std;
 
 int LCS(string X, string Y, int n, int m) {
@@ -32,14 +29,17 @@ int LCS(string X, string Y, int n, int m) {
     return dp[n][m];
 }
 
-int SCS(string X, string Y, int n, int m){
-    return m+n - LCS(X,Y,n,m);
+void MinInsertionDeletion(string X, string Y, int n, int m){
+    int ins, del;
+    del = X.length() - LCS(X,Y,n,m);
+    ins = Y.length() - LCS(X,Y,n,m);
+    cout << "Minimum number of insertion and deletion requried " << ins << "," << del << " respectively." << endl;
 }
 
-int main() {
-	string X = "aggtab";
-    string Y = "gxtxayb";
+int main(){
+    string X = "eetghusfgh";
+    string Y = "neetu";
 	int n = X.length(), m = Y.length();
-	cout << SCS(X, Y, n, m) << endl;
-	return 0;
+    MinInsertionDeletion(X,Y,n,m);
+    return 0;
 }
