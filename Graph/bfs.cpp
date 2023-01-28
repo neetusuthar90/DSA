@@ -2,7 +2,7 @@
 using namespace std;
 
 void  preparedAdjList ( unordered_map<int,set<int>> &adjList, vector<pair<int, int>> &edges){
-    for(int i=0; i<edges.size();i++){
+    for(int i=0; i< edges.size();i++){
         int u= edges[i].first;
         int v= edges[i].second;
         
