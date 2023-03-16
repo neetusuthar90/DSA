@@ -1,7 +1,31 @@
-# adding comment
-#include <iostream>
-using namespace std;
+import numpy as np
 
-int main(){
-    
-}
+def steepest_descent(f, grad, x0, alpha=0.1, tol=1e-6, max_iter=1000):
+    """
+    Steepest Descent Method for minimizing a function.
+
+    Parameters:
+    f (function): The function to minimize.
+    grad (function): The gradient of the function to minimize.
+    x0 (numpy array): The starting point for the optimization.
+    alpha (float): The step size for the method. Defaults to 0.1.
+    tol (float): The tolerance for the norm of the gradient. Defaults to 1e-6.
+    max_iter (int): The maximum number of iterations. Defaults to 1000.
+
+    Returns:
+    x_min (numpy array): The approximate minimizer of the function.
+    f_min (float): The minimum value of the function.
+    iter (int): The number of iterations used.
+    """
+
+    x = x0
+    iter = 0
+
+    while iter < max_iter:
+        grad_x = grad(x)
+        if np.linalg.norm(grad_x) < tol:
+            break
+        x = x - alpha * grad_x
+        iter += 1
+
+    return x, f(x), iter
